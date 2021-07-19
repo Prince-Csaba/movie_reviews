@@ -7,6 +7,8 @@ const allowCors = require('./middleware/allowCors');
 const corsOptions = require('./utils/corsOptions');
 const notExists = require('./middleware/notExists');
 
+const { googleLogin } = require('./controllers/LoginController');
+
 // Init Middleware
 app.use(express.json());
 app.use(allowCors);
@@ -36,6 +38,9 @@ app.get('/movie/:movie', async (req, res) => {
 
 		res.send(body)
 	})
+
+	//login try (based on Riki)
+	app.post("/api/login", googleLogin)
 
 });
 

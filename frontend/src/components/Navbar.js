@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <nav>
+    <nav className="nav">
       <Link to='/googleauth' className='google-button'>
         Login with Google
       </Link>
