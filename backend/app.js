@@ -2,13 +2,16 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const cors = require('cors');
-const request = require('request');
+//const request = require('request');
 const allowCors = require('./middleware/allowCors');
 const corsOptions = require('./utils/corsOptions');
 const notExists = require('./middleware/notExists');
 
 const { googleLogin } = require('./controllers/LoginController');
 const { commentReview } = require('./controllers/ReviewController')
+const { getMovie } = require('./controllers/MovieController')
+const { getReview } = require('./controllers/GetReviewController')
+
 
 // Init Middleware
 app.use(express.json());
@@ -23,28 +26,14 @@ app.get('/', (req, res) => {
 
 //GET - Some kind of movie
 //Public
-app.get('/movie/:movie', async (req, res) => {
-	const options = {
-		uri: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${req.params.movie}`,
-		method: 'GET',
-		headers: 'Content-type:application/json'
-	};
-
-	await request(options, (error, response, body) => {
-		if (error) console.error(error);
-
-		if (response.statusCode !== 200) {
-			return res.status(404).json({ msg: 'Something is not ok' });
-		}
-
-		res.json(JSON.parse(body))
-	})
-});
+app.get('/movie/:movie', getMovie);
 
 //login try (based on Riki)
 app.post("/api/login", googleLogin)
 
 app.post("/api/review", commentReview)
+
+app.post("/api/getReview", getReview)
 
 app.use(notExists);
 
