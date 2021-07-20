@@ -7,15 +7,12 @@ function Movie({ movie }) {
   const [text, setText] = useState("")
   const user = useContext(UserContext)
 
-
-  console.log(user)
-
   let formData = {
     google_id: user.google_id,
     full_name: user.full_name,
     movie_title: movie.title,
     movie_id: movie.id,
-    comment: comment
+    comment: text
   }
 
   const reviewBtn = () => {
@@ -34,7 +31,6 @@ function Movie({ movie }) {
       <p>{movie.vote_average}</p>
       <img src={"https://image.tmdb.org/t/p/original" + movie.poster_path} />
       <p>{movie.overview}</p>
-
       <button onClick={() => setComment(true)}>Review</button>
       {comment && (
         <div>

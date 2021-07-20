@@ -2,6 +2,7 @@ import { useState, createContext, useEffect } from 'react';
 import Login from './components/Login';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Review from './components/Review';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import './sass/App.sass';
@@ -46,6 +47,7 @@ function App() {
                   return null;
                 }}></Route>
               <Route path='/login' component={Login}></Route>
+              <Route path='/review' component={Review}></Route>
             </>
           }
         </Switch>
