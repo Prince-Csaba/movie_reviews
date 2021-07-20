@@ -6,6 +6,8 @@ exports.googleLogin = (req, res) => {
 
   const url = 'https://oauth2.googleapis.com/token';
 
+  console.log(code)
+
   const body = {
     code,
     client_id: '812824398261-5ofavj8ubto60jeir8haq2rulvuidha0.apps.googleusercontent.com',

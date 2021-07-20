@@ -11,7 +11,7 @@ export const UserContext = createContext(null);
 function App() {
   const [user, setUser] = useState(null);
 
-  const googleUrl = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&prompt-select_account&client_id=812824398261-5ofavj8ubto60jeir8haq2rulvuidha0.apps.googleusercontent.com&scope=openid%20profile%20email%20https://www.googleapis.com/auth/calendar&redirect_uri=http%3A//localhost:3000/login';
+  const googleUrl = 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&prompt-select_account&client_id=812824398261-5ofavj8ubto60jeir8haq2rulvuidha0.apps.googleusercontent.com&scope=openid%20profile%20email&redirect_uri=http%3A//localhost:3000/login';
 
   useEffect(() => {
     let token = localStorage.getItem('jwt');
@@ -36,14 +36,18 @@ function App() {
       <UserContext.Provider value={user}>
         <Navbar setUser={setUser} />
         <Switch>
-          <Route path='/' exact component={Home}></Route>
-          <Route
-            path='/googleauth'
-            component={() => {
-              window.location.href = googleUrl;
-              return null;
-            }}></Route>
-          <Route path='/login' component={Login}></Route>
+          {user &&
+            <>
+              <Route path='/' exact component={Home}></Route>
+              <Route
+                path='/googleauth'
+                component={() => {
+                  window.location.href = googleUrl;
+                  return null;
+                }}></Route>
+              <Route path='/login' component={Login}></Route>
+            </>
+          }
         </Switch>
       </UserContext.Provider>
     </Router>

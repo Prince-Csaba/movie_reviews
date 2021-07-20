@@ -8,6 +8,7 @@ const corsOptions = require('./utils/corsOptions');
 const notExists = require('./middleware/notExists');
 
 const { googleLogin } = require('./controllers/LoginController');
+const { commentReview } = require('./controllers/ReviewController')
 
 // Init Middleware
 app.use(express.json());
@@ -36,13 +37,14 @@ app.get('/movie/:movie', async (req, res) => {
 			return res.status(404).json({ msg: 'Something is not ok' });
 		}
 
-		res.send(body)
+		res.json(JSON.parse(body))
 	})
-
-	//login try (based on Riki)
-	app.post("/api/login", googleLogin)
-
 });
+
+//login try (based on Riki)
+app.post("/api/login", googleLogin)
+
+app.post("/api/review", commentReview)
 
 app.use(notExists);
 

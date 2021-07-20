@@ -9,10 +9,9 @@ function Login(props) {
 
   useEffect(() => {
     axios
-      .post('http://localhost:5000/api/login', { code })
+      .post('http://localhost:8080/api/login', { code })
       .then((res) => {
-        localStorage.setItem('jwt', res.data.token);
-        localStorage.setItem('access_token', res.data.accessToken);
+        localStorage.setItem('jwt', res.data);
         history.push('/');
         history.go(0);
       })
