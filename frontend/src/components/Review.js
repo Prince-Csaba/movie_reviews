@@ -5,14 +5,14 @@ function Review() {
   const [radio, setRadio] = useState("movie-title")
   const [search, setSearch] = useState("")
 
-  let formData = {
+  let reviewData = {
     searchValue: search,
     radioValue: radio
   }
 
   const getReview = () => {
     axios
-      .post('http://localhost:8080/api/getReview', formData)
+      .post('http://localhost:8080/api/getReview', reviewData)
       .then((res) => {
         console.log(res)
       })
