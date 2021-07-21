@@ -3,6 +3,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Review from './components/Review';
+import Landing from './components/Landing';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import './sass/App.sass';
@@ -37,18 +38,24 @@ function App() {
       <UserContext.Provider value={user}>
         <Navbar setUser={setUser} />
         <Switch>
-          <Route
-            path='/googleauth'
-            component={() => {
-              window.location.href = googleUrl;
-              return null;
-            }}></Route>
-          <Route path='/login' component={Login}></Route>
-          {user &&
-            <>
-              <Route path='/' exact component={Home}></Route>
-              <Route path='/review' component={Review}></Route>
-            </>
+          {
+            user
+              ?
+              <>
+                <Route path='/' exact component={Home}></Route>
+                <Route path='/review' component={Review}></Route>
+              </>
+              :
+              <>
+                <Route path='/' exact component={Landing}></Route>
+                <Route
+                  path='/googleauth'
+                  component={() => {
+                    window.location.href = googleUrl;
+                    return null;
+                  }}></Route>
+                <Route path='/login' component={Login}></Route>
+              </>
           }
 
         </Switch>
