@@ -5,11 +5,8 @@ const { getReview } = require('../controllers/GetReviewController')
 const { getMovie } = require('../controllers/MovieController')
 
 router.get('/movie/:movie', getMovie);
-
 router.post('/api/login', googleLogin);
-
 router.post("/api/review", commentReview)
-
 router.post("/api/getReview", getReview)
 
 module.exports = router;
