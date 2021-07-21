@@ -29,7 +29,7 @@ function Movie({ movie }) {
     <div className="movie">
       <h3>{movie.title}</h3>
       <p>{movie.vote_average}</p>
-      <img src={"https://image.tmdb.org/t/p/original" + movie.poster_path} />
+      <img alt="img" src={"https://image.tmdb.org/t/p/original" + movie.poster_path} />
       <p>{movie.overview}</p>
       <button onClick={() => setComment(true)}>Review</button>
       {comment && (
