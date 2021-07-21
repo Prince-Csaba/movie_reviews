@@ -16,7 +16,7 @@ app.use(cors(corsOptions));
 //GET - Basic route
 //Public
 app.get('/', (req, res) => {
-	res.send('Backend is on')
+	res.json('Backend is on')
 });
 
 app.use('/', mainRoute);
