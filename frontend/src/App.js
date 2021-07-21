@@ -37,19 +37,20 @@ function App() {
       <UserContext.Provider value={user}>
         <Navbar setUser={setUser} />
         <Switch>
+          <Route
+            path='/googleauth'
+            component={() => {
+              window.location.href = googleUrl;
+              return null;
+            }}></Route>
+          <Route path='/login' component={Login}></Route>
           {user &&
             <>
               <Route path='/' exact component={Home}></Route>
-              <Route
-                path='/googleauth'
-                component={() => {
-                  window.location.href = googleUrl;
-                  return null;
-                }}></Route>
-              <Route path='/login' component={Login}></Route>
               <Route path='/review' component={Review}></Route>
             </>
           }
+
         </Switch>
       </UserContext.Provider>
     </Router>
