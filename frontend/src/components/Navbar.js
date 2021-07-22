@@ -21,7 +21,7 @@ function Navbar({ setUser }) {
   navRef.current = navBackground
   useEffect(() => {
     const handleScroll = () => {
-      const show = window.scrollY > 120
+      const show = window.scrollY > 150
       if (navRef.current !== show) {
         setNavBackground(show)
       }
@@ -33,7 +33,7 @@ function Navbar({ setUser }) {
   }, [])
 
   return (
-    <nav className="nav" id={navBackground ? 'color' : 'transparent'}>
+    <nav id={navBackground ? 'color' : 'transparent'}>
       {user ? (
         <>
           <Link to='/'>HOME</Link>

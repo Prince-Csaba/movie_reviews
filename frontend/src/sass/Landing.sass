@@ -1,0 +1,26 @@
+#landing
+  h1
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    display: block
+    color: #ffffffbd
+    font-size: 124px
+    letter-spacing: 8px
+    cursor: pointer
+
+  h1::after
+    content: "MOVIE REVIEWS"
+    position: absolute
+    color: transparent
+    background-image: repeating-linear-gradient(135deg,transparent 0,transparent 2px,white 2px,white 4px)
+    -webkit-background-clip: text
+    top: 40px
+    left: 0px
+    z-index: 9999
+    transition: .7s
+
+  h1:hover:after
+    top: 30px
+    left: 15px

@@ -1,5 +1,38 @@
 .home
+  display: flex
+  flex-direction: column
+  align-items: center
+
+  input
+    text-align: center
+    outline: none
+    border: none
+    margin: 30px
+    padding: 20px
+    width: 420px
+    height: 45px
+    border-radius: 3px
+    font-size: 16px
+
+  button
+    border: none
+    margin: 10px
+    width: 160px
+    height: 35px
+    background: none
+    color: white
+    border: 1px solid white
+    border-radius: 2px
+    font-weight: 600
+    font-size: 20px
+    letter-spacing: 2px
+    &:hover
+      color: #81847f
+      background: white
+      transition: ease-in-out .2s
+
   .movie-card
     display: flex
     flex-direction: row
     flex-wrap: wrap
+    justify-content: space-evenly
