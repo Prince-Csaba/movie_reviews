@@ -1,0 +1,7 @@
+{
+  "scripts" : { 
+    "start" : "npm install -g serve; serve -s build",
+    "heroku-postbuild" : "npm run build",
+    "postinstall" : "npm run build"
+  }
+}
